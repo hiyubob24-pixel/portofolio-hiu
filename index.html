@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio | Hiu Kencana Widhi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root { --primary-blue: #0a2351; --accent-blue: #3b82f6; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f9; color: #333; scroll-behavior: smooth; }
+        .hero { background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%); color: white; padding: 80px 0; }
+        .section-title { font-weight: 700; color: var(--primary-blue); border-bottom: 3px solid var(--accent-blue); display: inline-block; margin-bottom: 30px; padding-bottom: 5px; }
+        .card { border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 12px; transition: 0.3s; }
+        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important; transition: 0.3s ease; }
+        .timeline-item { border-left: 2px solid var(--accent-blue); padding-left: 20px; position: relative; padding-bottom: 20px; }
+        .timeline-item::before { content: ""; position: absolute; width: 12px; height: 12px; background: var(--accent-blue); border-radius: 50%; left: -7px; top: 5px; }
+        .cert-img { object-fit: contain; background-color: #f8f9fa; width: 100%; height: 160px; }
+        .category-subtitle { color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        /* Native Fix untuk teks Justify di Mobile */
+        .justify-text { text-align: justify; text-justify: inter-word; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">PORTOFOLIO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Pengalaman</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#project">Proyek</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Keahlian</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificates">Sertifikat</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Hiu Kencana Widhi</h1>
+            <p class="lead opacity-75">S1 Teknik Logistik | Logistics Operations & Data Analysis <br>Sidoarjo, Jawa Timur</p>
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap" id="hero-btns">
+                <a href="mailto:hiu@engineer.com" class="btn btn-light btn-sm"><i class="bi bi-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/hiu-kencana-widhi" target="_blank" class="btn btn-outline-light btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container my-5">
+        
+        <section id="profile" class="row mb-5 align-items-center">
+            <div class="col-lg-8">
+                <h2 class="section-title">Profil Profesional</h2>
+                <p class="lead justify-text">
+                    Fresh graduate Teknik Logistik dengan minat tinggi pada operasional logistik, manajemen rantai pasok, dan analisis data. 
+                    Memiliki pengalaman praktik kerja lapangan di operasional kargo udara serta instalasi jaringan internet. 
+                    Berorientasi pada disiplin, kecepatan belajar, dan mampu berkontribusi maksimal dalam tim teknis maupun operasional.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <div class="p-4 bg-white rounded shadow-sm">
+                    <h6 class="fw-bold mb-1 mt-3">Sarjana (S1)</h6>
+                    <p class="text-primary small fw-bold mb-0">Teknik Logistik </p>
+                    <p class="text-muted small">Institut Teknologi Insan Cendekia Mandiri <br>(Sidoarjo, Jawa Timur)</p>
+                    <div class="mb-3">
+                        <span class="badge bg-info p-2">IPK: 3.85 / 4.00</span> 
+                    </div>
+
+                    <h6 class="fw-bold mb-1 mt-2">Vokasi (SMK)</h6>
+                    <p class="text-primary small fw-bold mb-0">Teknik Komputer & Jaringan (TKJ)</p>
+                    <p class="text-muted small mb-1">SMK Muhammadiyah Kajen <br>(Pekalongan, Jawa Tengah)</p>
+                    <div>
+                        <span class="badge bg-info p-2">Nilai Ijazah: 88.88 / 100</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="mb-5">
+            <h2 class="section-title">Pengalaman Kerja & Magang</h2>
+            <div class="card p-4 shadow-sm">
+                <div class="timeline-item">
+                    <h5 class="fw-bold">Magang - Operasional Lapangan (Cargo)</h5>
+                    <p class="text-primary mb-1">PT. Dian Mega Kurnia | Bandara Juanda</p>
+                    <ul class="text-muted small">
+                        <li>Mengelola administrasi pengiriman, penerimaan barang, dan pengecekan dokumen.</li>
+                        <li>Optimasi penataan barang di area kargo untuk kelancaran distribusi.</li>
+                        <li>Instalasi dan pengecekan perangkat jaringan WiFi operasional.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h5 class="fw-bold">Magang - Teknisi Lapangan</h5>
+                    <p class="text-primary mb-1">PT. Telkom Indonesia | Batang, Jawa Tengah</p>
+                    <ul class="text-muted small">
+                        <li>Instalasi dan aktivasi layanan IndiHome (FTTH).</li>
+                        <li>Analisis dan penanganan gangguan teknis jaringan internet.</li>
+                    </ul>
+                </div>
+                <div class="timeline-item">
+                    <h5 class="fw-bold">Freelance - Instalasi WiFi</h5>
+                    <p class="text-primary mb-1">Independen | Sidoarjo</p>
+                    <p class="small text-muted">Melakukan pemasangan dan troubleshooting perangkat jaringan internet mandiri.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="project" class="mb-5">
+            <h2 class="section-title">Proyek Unggulan</h2>
+            <div class="card bg-dark text-white shadow-lg border-0 overflow-hidden">
+                <div class="row g-0">
+                    <div class="col-lg-5 p-5 d-flex flex-column justify-content-center">
+                        <h5 class="text-info fw-bold mb-1">TUGAS AKHIR / SKRIPSI</h5>
+                        <h3 class="fw-bold mb-3">Optimasi Area Inbound PT. Dian Mega Kurnia</h3>
+                        <p class="opacity-75 mb-4 small justify-text">
+                            Redesain tata letak kargo menggunakan metode <strong>Systematic Layout Planning (SLP)</strong> untuk mereduksi jarak tempuh dan mengeliminasi bottleneck. Fokus pada efisiensi ruang dan alur distribusi kargo udara.
+                        </p>
+                        <div class="p-3 border border-secondary rounded mb-2">
+                            <h6 class="text-info small mb-1"><i class="bi bi-graph-up"></i> Hasil Analisis</h6>
+                            <p class="small mb-0 opacity-75">Reduksi jarak material handling & peningkatan efisiensi ruang.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 bg-dark p-4 d-flex flex-column gap-4 justify-content-center border-start border-secondary text-center">
+                        <div>
+                            <img src="111.png" alt="3D Layout" class="img-fluid rounded mb-2" style="max-height: 400px;" onerror="this.src='https://via.placeholder.com/600x350?text=3D+Layout+SketchUp'">
+                            <p class="small text-info fw-bold opacity-75">Pemodelan 3D SketchUp</p>
+                        </div>
+                        <div>
+                            <img src="222.png" alt="Grafik Efisiensi" class="img-fluid rounded mb-2" style="max-height: 300px;" onerror="this.src='https://via.placeholder.com/600x250?text=Grafik+Efisiensi+Data'">
+                            <p class="small mb-0 text-info fw-bold opacity-75">Grafik Peningkatan Efisiensi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="mb-5">
+            <h2 class="section-title">Technical Expertise & Competencies</h2>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="card h-100 p-4 border-start border-success border-4 shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-file-earmark-excel fs-2 text-success me-3"></i>
+                            <h5 class="fw-bold mb-0">Advanced Data Analysis (Excel)</h5>
+                        </div>
+                        <p class="small text-muted mb-3">Mampu mengolah data operasional logistik yang kompleks menjadi wawasan strategis menggunakan:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border p-2">Pivot Tables & Charts</span>
+                            <span class="badge bg-light text-dark border p-2">VLOOKUP, HLOOKUP, XLOOKUP</span>
+                            <span class="badge bg-light text-dark border p-2">Logic Functions (Nested IF)</span>
+                            <span class="badge bg-light text-dark border p-2">Data Cleaning & Validation</span>
+                            <span class="badge bg-light text-dark border p-2">Linear Regression & Trend Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 p-4 border-start border-primary border-4 shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-box-seam fs-2 text-primary me-3"></i>
+                            <h5 class="fw-bold mb-0">Warehouse & Facility Design</h5>
+                        </div>
+                        <p class="small text-muted mb-3">Spesialisasi dalam optimasi tata letak fasilitas industri dengan kompetensi:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border p-2">SLP Methodology</span>
+                            <span class="badge bg-light text-dark border p-2">SketchUp (3D Modeling)</span>
+                            <span class="badge bg-light text-dark border p-2">Material Flow Analysis</span>
+                            <span class="badge bg-light text-dark border p-2">Activity Relationship Charting</span>
+                            <span class="badge bg-light text-dark border p-2">Bottleneck Identification</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 p-4 border-start border-info border-4 shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-hdd-network fs-2 text-info me-3"></i>
+                            <h5 class="fw-bold mb-0">Logistics IT Infrastructure</h5>
+                        </div>
+                        <p class="small text-muted mb-3">Memastikan kelancaran sistem informasi logistik melalui infrastruktur digital:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border p-2">Fiber Optic & FTTH Installation</span>
+                            <span class="badge bg-light text-dark border p-2">Local Area Network (LAN)</span>
+                            <span class="badge bg-light text-dark border p-2">WiFi Troubleshooting</span>
+                            <span class="badge bg-light text-dark border p-2">Network Administration</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card h-100 p-4 border-start border-warning border-4 shadow-sm">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="bi bi-graph-up-arrow fs-2 text-warning me-3"></i>
+                            <h5 class="fw-bold mb-0">Statistical & Predictive Modeling</h5>
+                        </div>
+                        <p class="small text-muted mb-3">Kemampuan analisis statistik untuk riset operasional dan pengambilan keputusan:</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark border p-2">SEM-PLS (SmartPLS 4.0)</span>
+                            <span class="badge bg-light text-dark border p-2">Descriptive Statistics (SPSS)</span>
+                            <span class="badge bg-light text-dark border p-2">IBM Data Science Foundation</span>
+                            <span class="badge bg-light text-dark border p-2">Regression & Correlation Analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certificates" class="mb-5">
+            <h2 class="section-title">Sertifikasi & Pengembangan</h2>
+
+            <div class="mb-5">
+                <h5 class="category-subtitle"><i class="bi bi-cpu text-primary"></i> Pelatihan Online IBM (11)</h5>
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/ed2f7849fa5c42259263117178d64703" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Data Visualization with Python-1.png" class="cert-img p-2" alt="IBM Data Viz" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Data+Viz'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Data Visualization with Python</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/705774056fef4e82897429131ad0a438" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Data Analysis with Python-1.png" class="cert-img p-2" alt="IBM Data Analyst" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Data+Analyst'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Data Analysis with Python</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/2f296c0152e14a238916a1c2cd375e0b" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Data Science Tools-1.png" class="cert-img p-2" alt="IBM Tools" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Tools'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Data Science Tools</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/d4a81ad51ff74fa28c98d5c9e8b5a974" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="IBM Cloud Essentials-1.png" class="cert-img p-2" alt="IBM Cloud" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Cloud'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Cloud Essentials</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/721cd005a3894d1da8e978041e794032" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Introduction to Cloud-1.png" class="cert-img p-2" alt="Intro Cloud" onerror="this.src='https://via.placeholder.com/300x200?text=Intro+Cloud'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Introduction to Cloud</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/a8d56615cd854a4c9f9509c06a345549" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Data Science 101-1.png" class="cert-img p-2" alt="DS 101" onerror="this.src='https://via.placeholder.com/300x200?text=DS+101'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Data Science 101</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/100966010d924fb1951391df0ca9c471" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Data Science Methodology-1.png" class="cert-img p-2" alt="Methodology" onerror="this.src='https://via.placeholder.com/300x200?text=Methodology'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Data Science Methodology</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/3333914501bf4d0b8469bdfe105b1c04" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="PROMP ENGINEER-1.png" class="cert-img p-2" alt="Prompt Eng" onerror="this.src='https://via.placeholder.com/300x200?text=Prompt+Eng'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Prompt Engineering for Everyone</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/b4692f9f84d54def882bc754e36790d2" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Digital Analytics  Regression-1.png" class="cert-img p-2" alt="Analytics" onerror="this.src='https://via.placeholder.com/300x200?text=Analytics'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Digital Analytics & Regression</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/1ee3eafa32084f93bd815b73e93eb8ce" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Statistics 101-1.png" class="cert-img p-2" alt="Statistics" onerror="this.src='https://via.placeholder.com/300x200?text=Statistics'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Statistics 101</div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/c9658202b47a4aed9f1b42e8c6ece072" target="_blank" class="text-decoration-none text-dark">
+                            <div class="card h-100 hover-card">
+                                <img src="Big Data 101-1.png" class="cert-img p-2" alt="Big Data" onerror="this.src='https://via.placeholder.com/300x200?text=Big+Data'">
+                                <div class="card-body p-2 text-center small fw-bold">IBM Big Data 101</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <h5 class="category-subtitle"><i class="bi bi-megaphone text-primary"></i> Seminar Nasional (3)</h5>
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 hover-card text-center">
+                            <img src="hiu+seminar+sofeware+enginer+telkom-1.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Software+Eng'">
+                            <div class="card-body p-2 small fw-bold">Software Engineering - Telkom</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 hover-card text-center">
+                            <img src="hiu+seminar bisnis+dan+kewirausahaan+uinsa.jpg" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Bisnis+UINSA'">
+                            <div class="card-body p-2 small fw-bold">Bisnis & Kewirausahaan - UINSA</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 hover-card text-center">
+                            <img src="hiu+seminar+public+speaking+informatika+iticm-1.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Speaking+Up'">
+                            <div class="card-body p-2 small fw-bold">Speaking Up - ITICM Sidoarjo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h5 class="category-subtitle"><i class="bi bi-people text-primary"></i> Organisasi & Kepanitiaan (2)</h5>
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 hover-card text-center">
+                            <img src="hiu+panitia+seminar+transformation+suplay chain+teklog+iticm.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Digital+Trans'">
+                            <div class="card-body p-2 small fw-bold">Panitia Digital Transformation</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <div class="card h-100 hover-card text-center">
+                            <img src="hiu+panitia+ kordinator+ makrab+teklog+iticm-1.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Makrab'">
+                            <div class="card-body p-2 small fw-bold">Koordinator Makrab Logistik</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-4 text-center">
+        <div class="container">
+            <p class="mb-0 small opacity-50">&copy; 2026 Hiu Kencana Widhi. S1 Teknik Logistik - ITICM.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/6285174208810" target="_blank" class="btn btn-success rounded-circle shadow-lg d-flex align-items-center justify-content-center" 
+       style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; z-index: 1000; font-size: 2rem;">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Native Injection for Download Button
+        const heroBtns = document.getElementById('hero-btns');
+        const downloadBtn = document.createElement('a');
+        downloadBtn.href = 'CV_Hiu_Kencana_Widhi_Teknik_Logistik_S1.pdf';
+        downloadBtn.className = 'btn btn-warning btn-sm fw-bold';
+        downloadBtn.innerHTML = '<i class="bi bi-file-earmark-pdf"></i> Download CV';
+        heroBtns.appendChild(downloadBtn);
+    </script>
+</body>
+</html>
