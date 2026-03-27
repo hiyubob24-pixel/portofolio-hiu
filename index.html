@@ -6,32 +6,58 @@
     <title>Portofolio | Hiu Kencana Widhi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
     <style>
         :root { --primary-blue: #0a2351; --accent-blue: #3b82f6; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f9; color: #333; scroll-behavior: smooth; }
-        .hero { background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%); color: white; padding: 80px 0; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f9; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        .hero { 
+            background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%); 
+            color: white; 
+            padding: 100px 0;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
         .section-title { font-weight: 700; color: var(--primary-blue); border-bottom: 3px solid var(--accent-blue); display: inline-block; margin-bottom: 30px; padding-bottom: 5px; }
-        .card { border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 12px; transition: 0.3s; }
-        .hover-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.1) !important; transition: 0.3s ease; }
+        
+        .card { border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 12px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hover-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; }
+        
         .timeline-item { border-left: 2px solid var(--accent-blue); padding-left: 20px; position: relative; padding-bottom: 20px; }
         .timeline-item::before { content: ""; position: absolute; width: 12px; height: 12px; background: var(--accent-blue); border-radius: 50%; left: -7px; top: 5px; }
-        .cert-img { object-fit: contain; background-color: #f8f9fa; width: 100%; height: 160px; }
-        .category-subtitle { color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         
-        /* Native Fix untuk teks Justify di Mobile */
+        .cert-img { object-fit: contain; background-color: #f8f9fa; width: 100%; height: 160px; transition: 0.3s; }
+        .hover-card:hover .cert-img { transform: scale(1.05); }
+        
+        .category-subtitle { color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .justify-text { text-align: justify; text-justify: inter-word; }
+
+        /* Chart Container Styling */
+        .chart-container { position: relative; margin: auto; height: 300px; width: 100%; max-width: 500px; }
+
+        .btn-whatsapp {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
+            z-index: 1000; font-size: 2rem; display: flex; align-items: center; justify-content: center;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">PORTOFOLIO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto text-center">
                     <li class="nav-item"><a class="nav-link" href="#profile">Profil</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Pengalaman</a></li>
                     <li class="nav-item"><a class="nav-link" href="#project">Proyek</a></li>
@@ -43,19 +69,19 @@
     </nav>
 
     <header class="hero text-center">
-        <div class="container">
+        <div class="container" data-aos="zoom-in">
             <h1 class="display-4 fw-bold">Hiu Kencana Widhi</h1>
             <p class="lead opacity-75">S1 Teknik Logistik | Logistics Operations & Data Analysis <br>Sidoarjo, Jawa Timur</p>
             <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap" id="hero-btns">
-                <a href="mailto:hiu@engineer.com" class="btn btn-light btn-sm"><i class="bi bi-envelope"></i> Email</a>
-                <a href="https://www.linkedin.com/in/hiu-kencana-widhi" target="_blank" class="btn btn-outline-light btn-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                <a href="mailto:hiu@engineer.com" class="btn btn-light btn-sm shadow-sm"><i class="bi bi-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/hiu-kencana-widhi" target="_blank" class="btn btn-outline-light btn-sm shadow-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
             </div>
         </div>
     </header>
 
     <main class="container my-5">
         
-        <section id="profile" class="row mb-5 align-items-center">
+        <section id="profile" class="row mb-5 align-items-center" data-aos="fade-up">
             <div class="col-lg-8">
                 <h2 class="section-title">Profil Profesional</h2>
                 <p class="lead justify-text">
@@ -65,25 +91,24 @@
                 </p>
             </div>
             <div class="col-lg-4 text-lg-end">
-                <div class="p-4 bg-white rounded shadow-sm">
+                <div class="p-4 bg-white rounded shadow-sm border-start border-primary border-4">
                     <h6 class="fw-bold mb-1 mt-3">Sarjana (S1)</h6>
                     <p class="text-primary small fw-bold mb-0">Teknik Logistik </p>
                     <p class="text-muted small">Institut Teknologi Insan Cendekia Mandiri <br>(Sidoarjo, Jawa Timur)</p>
                     <div class="mb-3">
-                        <span class="badge bg-info p-2">IPK: 3.85 / 4.00</span> 
+                        <span class="badge bg-info p-2 shadow-sm text-white">IPK: 3.85 / 4.00</span> 
                     </div>
-
                     <h6 class="fw-bold mb-1 mt-2">Vokasi (SMK)</h6>
                     <p class="text-primary small fw-bold mb-0">Teknik Komputer & Jaringan (TKJ)</p>
                     <p class="text-muted small mb-1">SMK Muhammadiyah Kajen <br>(Pekalongan, Jawa Tengah)</p>
                     <div>
-                        <span class="badge bg-info p-2">Nilai Ijazah: 88.88 / 100</span>
+                        <span class="badge bg-info p-2 shadow-sm text-white">Nilai Ijazah: 88.88 / 100</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="mb-5">
+        <section id="experience" class="mb-5" data-aos="fade-up">
             <h2 class="section-title">Pengalaman Kerja & Magang</h2>
             <div class="card p-4 shadow-sm">
                 <div class="timeline-item">
@@ -111,7 +136,7 @@
             </div>
         </section>
 
-        <section id="project" class="mb-5">
+        <section id="project" class="mb-5" data-aos="fade-up">
             <h2 class="section-title">Proyek Unggulan</h2>
             <div class="card bg-dark text-white shadow-lg border-0 overflow-hidden">
                 <div class="row g-0">
@@ -128,11 +153,11 @@
                     </div>
                     <div class="col-lg-7 bg-dark p-4 d-flex flex-column gap-4 justify-content-center border-start border-secondary text-center">
                         <div>
-                            <img src="111.png" alt="3D Layout" class="img-fluid rounded mb-2" style="max-height: 400px;" onerror="this.src='https://via.placeholder.com/600x350?text=3D+Layout+SketchUp'">
+                            <img src="111.png" alt="3D Layout" class="img-fluid rounded mb-2" style="max-height: 300px;" onerror="this.src='https://via.placeholder.com/600x350?text=3D+Layout+SketchUp'">
                             <p class="small text-info fw-bold opacity-75">Pemodelan 3D SketchUp</p>
                         </div>
                         <div>
-                            <img src="222.png" alt="Grafik Efisiensi" class="img-fluid rounded mb-2" style="max-height: 300px;" onerror="this.src='https://via.placeholder.com/600x250?text=Grafik+Efisiensi+Data'">
+                            <img src="222.png" alt="Grafik Efisiensi" class="img-fluid rounded mb-2" style="max-height: 200px;" onerror="this.src='https://via.placeholder.com/600x250?text=Grafik+Efisiensi+Data'">
                             <p class="small mb-0 text-info fw-bold opacity-75">Grafik Peningkatan Efisiensi</p>
                         </div>
                     </div>
@@ -140,11 +165,24 @@
             </div>
         </section>
 
-        <section id="skills" class="mb-5">
+        <section id="skills" class="mb-5" data-aos="fade-up">
             <h2 class="section-title">Technical Expertise & Competencies</h2>
+            
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="card p-4 shadow-sm text-center">
+                        <h5 class="fw-bold mb-4"><i class="bi bi-graph-up-arrow text-primary me-2"></i>Skill Matrix Analysis</h5>
+                        <div class="chart-container">
+                            <canvas id="skillsChart"></canvas>
+                        </div>
+                        <p class="small text-muted mt-3 mb-0 italic">Visualisasi tingkat kompetensi berdasarkan integrasi latar belakang SMK TKJ dan S1 Teknik Logistik.</p>
+                    </div>
+                </div>
+            </div>
+
             <div class="row g-4">
                 <div class="col-md-6">
-                    <div class="card h-100 p-4 border-start border-success border-4 shadow-sm">
+                    <div class="card h-100 p-4 border-start border-success border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-file-earmark-excel fs-2 text-success me-3"></i>
                             <h5 class="fw-bold mb-0">Advanced Data Analysis (Excel)</h5>
@@ -160,7 +198,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card h-100 p-4 border-start border-primary border-4 shadow-sm">
+                    <div class="card h-100 p-4 border-start border-primary border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-box-seam fs-2 text-primary me-3"></i>
                             <h5 class="fw-bold mb-0">Warehouse & Facility Design</h5>
@@ -176,7 +214,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card h-100 p-4 border-start border-info border-4 shadow-sm">
+                    <div class="card h-100 p-4 border-start border-info border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-hdd-network fs-2 text-info me-3"></i>
                             <h5 class="fw-bold mb-0">Logistics IT Infrastructure</h5>
@@ -191,7 +229,7 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card h-100 p-4 border-start border-warning border-4 shadow-sm">
+                    <div class="card h-100 p-4 border-start border-warning border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-graph-up-arrow fs-2 text-warning me-3"></i>
                             <h5 class="fw-bold mb-0">Statistical & Predictive Modeling</h5>
@@ -208,13 +246,13 @@
             </div>
         </section>
         
-        <section id="certificates" class="mb-5">
+        <section id="certificates" class="mb-5" data-aos="fade-up">
             <h2 class="section-title">Sertifikasi & Pengembangan</h2>
 
             <div class="mb-5">
                 <h5 class="category-subtitle"><i class="bi bi-cpu text-primary"></i> Pelatihan Online IBM (11)</h5>
                 <div class="row g-3">
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/ed2f7849fa5c42259263117178d64703" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Visualization with Python-1.png" class="cert-img p-2" alt="IBM Data Viz" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Data+Viz'">
@@ -222,7 +260,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/705774056fef4e82897429131ad0a438" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Analysis with Python-1.png" class="cert-img p-2" alt="IBM Data Analyst" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Data+Analyst'">
@@ -230,7 +268,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/2f296c0152e14a238916a1c2cd375e0b" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Science Tools-1.png" class="cert-img p-2" alt="IBM Tools" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Tools'">
@@ -238,15 +276,15 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
-                        <a href="https://courses.cognitiveclass.ai/certificates/d4a81ad51ff74fa28c98d5c9e8b5a974" target="_blank" class="text-decoration-none text-dark">
+                    <div class="col-6 col-md-4">
+                        <a href="https://courses.cognitiveclass.ai/certificates/d4a81BSN7gxmPWYCAKJgA9aH4yNuERpTvs4uiX" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="IBM Cloud Essentials-1.png" class="cert-img p-2" alt="IBM Cloud" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Cloud'">
                                 <div class="card-body p-2 text-center small fw-bold">IBM Cloud Essentials</div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/721cd005a3894d1da8e978041e794032" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Introduction to Cloud-1.png" class="cert-img p-2" alt="Intro Cloud" onerror="this.src='https://via.placeholder.com/300x200?text=Intro+Cloud'">
@@ -254,7 +292,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/a8d56615cd854a4c9f9509c06a345549" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Science 101-1.png" class="cert-img p-2" alt="DS 101" onerror="this.src='https://via.placeholder.com/300x200?text=DS+101'">
@@ -262,7 +300,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/100966010d924fb1951391df0ca9c471" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Science Methodology-1.png" class="cert-img p-2" alt="Methodology" onerror="this.src='https://via.placeholder.com/300x200?text=Methodology'">
@@ -270,7 +308,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/3333914501bf4d0b8469bdfe105b1c04" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="PROMP ENGINEER-1.png" class="cert-img p-2" alt="Prompt Eng" onerror="this.src='https://via.placeholder.com/300x200?text=Prompt+Eng'">
@@ -278,15 +316,15 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/b4692f9f84d54def882bc754e36790d2" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
-                                <img src="Digital Analytics  Regression-1.png" class="cert-img p-2" alt="Analytics" onerror="this.src='https://via.placeholder.com/300x200?text=Analytics'">
+                                <img src="Digital Analytics Regression-1.png" class="cert-img p-2" alt="Analytics" onerror="this.src='https://via.placeholder.com/300x200?text=Analytics'">
                                 <div class="card-body p-2 text-center small fw-bold">IBM Digital Analytics & Regression</div>
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/1ee3eafa32084f93bd815b73e93eb8ce" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Statistics 101-1.png" class="cert-img p-2" alt="Statistics" onerror="this.src='https://via.placeholder.com/300x200?text=Statistics'">
@@ -294,7 +332,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-6 col-md-4">
                         <a href="https://courses.cognitiveclass.ai/certificates/c9658202b47a4aed9f1b42e8c6ece072" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Big Data 101-1.png" class="cert-img p-2" alt="Big Data" onerror="this.src='https://via.placeholder.com/300x200?text=Big+Data'">
@@ -355,18 +393,53 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/6285174208810" target="_blank" class="btn btn-success rounded-circle shadow-lg d-flex align-items-center justify-content-center" 
-       style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; z-index: 1000; font-size: 2rem;">
+    <a href="https://wa.me/6285174208810" target="_blank" class="btn btn-success rounded-circle shadow-lg btn-whatsapp d-flex align-items-center justify-content-center" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; z-index: 1000; font-size: 2rem;">
         <i class="bi bi-whatsapp"></i>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script>
-        // Native Injection for Download Button
+        AOS.init({ duration: 1000, once: true });
+
+        // Chart Matrix Radar
+        const ctx = document.getElementById('skillsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: ['Excel/Data', 'Layout SLP', '3D SketchUp', 'Networking', 'Warehouse Ops', 'Statistics'],
+                datasets: [{
+                    label: 'Expertise Level',
+                    data: [95, 90, 85, 80, 88, 85],
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: 'rgba(59, 130, 246, 1)',
+                    borderWidth: 2,
+                    pointBackgroundColor: 'rgba(10, 35, 81, 1)'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: { 
+                        beginAtZero: true, 
+                        max: 100, 
+                        ticks: { display: false },
+                        grid: { color: '#e0e0e0' },
+                        angleLines: { color: '#e0e0e0' }
+                    }
+                },
+                plugins: { legend: { display: false } }
+            }
+        });
+
+        // Download CV Script
         const heroBtns = document.getElementById('hero-btns');
         const downloadBtn = document.createElement('a');
         downloadBtn.href = 'CV_Hiu_Kencana_Widhi_Teknik_Logistik_S1.pdf';
-        downloadBtn.className = 'btn btn-warning btn-sm fw-bold';
+        downloadBtn.className = 'btn btn-warning btn-sm fw-bold shadow-sm';
         downloadBtn.innerHTML = '<i class="bi bi-file-earmark-pdf"></i> Download CV';
         heroBtns.appendChild(downloadBtn);
     </script>
