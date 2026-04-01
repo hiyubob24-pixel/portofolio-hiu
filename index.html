@@ -9,11 +9,30 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
-        :root { --primary-blue: #0a2351; --accent-blue: #3b82f6; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f9; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
+        :root { 
+            /* TEMA BARU: Slate & Teal */
+            --primary-color: #0f172a; /* Slate 900 */
+            --accent-color: #14b8a6; /* Teal 500 */
+        }
         
-        /* 1. Scroll Progress Bar */
-        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--accent-blue); z-index: 1060; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--accent-blue); }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        /* OVERRIDE BOOTSTRAP BLUES */
+        .text-primary, .text-info { color: var(--accent-color) !important; }
+        .bg-primary, .bg-info { background-color: var(--accent-color) !important; }
+        .border-primary, .border-info { border-color: var(--accent-color) !important; }
+        .badge.bg-info { background-color: var(--accent-color) !important; color: #fff !important; }
+
+        /* 1. Glow Scroll Progress Bar */
+        .scroll-progress { 
+            position: fixed; top: 0; left: 0; width: 0%; height: 4px; 
+            background: linear-gradient(90deg, #2dd4bf, var(--accent-color), #0f766e);
+            background-size: 200% 100%;
+            z-index: 1060; transition: width 0.1s ease-out; 
+            box-shadow: 0 0 15px var(--accent-color), 0 0 5px #fff;
+            animation: flowGlow 2s linear infinite;
+        }
+        @keyframes flowGlow { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
 
         /* --- Floating Glassmorphism Navbar --- */
         .navbar.bg-dark {
@@ -24,7 +43,7 @@
             width: 92%;
             max-width: 1000px;
             border-radius: 20px;
-            background-color: rgba(10, 35, 81, 0.65) !important;
+            background-color: rgba(15, 23, 42, 0.75) !important; /* Warna Slate transparan */
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.15);
@@ -36,7 +55,7 @@
         /* 2. Dynamic Gradient Background + Floating Particles */
         .hero { 
             position: relative;
-            background: linear-gradient(-45deg, var(--primary-blue), #1e40af, #0ea5e9, var(--primary-blue));
+            background: linear-gradient(-45deg, #0f172a, #1e293b, #0f766e, #0f172a);
             background-size: 400% 400%;
             animation: gradientBG 15s ease infinite;
             color: white; 
@@ -70,7 +89,7 @@
         }
         @keyframes reveal { to { transform: translateY(0); opacity: 1; } }
 
-        .section-title { font-weight: 700; color: var(--primary-blue); border-bottom: 3px solid var(--accent-blue); display: inline-block; margin-bottom: 30px; padding-bottom: 5px; }
+        .section-title { font-weight: 700; color: var(--primary-color); border-bottom: 3px solid var(--accent-color); display: inline-block; margin-bottom: 30px; padding-bottom: 5px; }
         
         /* 3. Super Smooth Shine Hover Effect pada Card */
         .card { 
@@ -88,18 +107,18 @@
         .card i { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); display: inline-block; }
         .hover-card:hover i { transform: scale(1.2) translateY(-2px); }
 
-        .timeline-item { border-left: 2px solid var(--accent-blue); padding-left: 20px; position: relative; padding-bottom: 20px; }
+        .timeline-item { border-left: 2px solid var(--accent-color); padding-left: 20px; position: relative; padding-bottom: 20px; }
         .timeline-item::before { 
-            content: ""; position: absolute; width: 12px; height: 12px; background: var(--accent-blue); 
+            content: ""; position: absolute; width: 12px; height: 12px; background: var(--accent-color); 
             border-radius: 50%; left: -7px; top: 5px; transition: transform 0.3s ease; animation: dotPulse 2s infinite;
         }
-        .timeline-item:hover::before { transform: scale(1.5); box-shadow: 0 0 10px var(--accent-blue); animation: none; }
-        @keyframes dotPulse { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
+        .timeline-item:hover::before { transform: scale(1.5); box-shadow: 0 0 10px var(--accent-color); animation: none; }
+        @keyframes dotPulse { 0% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(20, 184, 166, 0); } 100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); } }
         
         .cert-img { object-fit: contain; background-color: #f8f9fa; width: 100%; height: 160px; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
         .hover-card:hover .cert-img { transform: scale(1.06); }
         
-        .category-subtitle { color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .category-subtitle { color: var(--primary-color); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .justify-text { text-align: justify; text-justify: inter-word; }
         .chart-container { position: relative; margin: auto; height: 300px; width: 100%; max-width: 500px; }
 
@@ -116,12 +135,13 @@
         .btn-whatsapp {
             position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
             z-index: 1000; font-size: 2rem; display: flex; align-items: center; justify-content: center;
+            background-color: var(--accent-color); border-color: var(--accent-color);
             animation: whatsappPulse 2s infinite; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        .btn-whatsapp:hover { animation: none; }
-        @keyframes whatsappPulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        .btn-whatsapp:hover { animation: none; background-color: #0f766e; }
+        @keyframes whatsappPulse { 0% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(20, 184, 166, 0); } 100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); } }
 
-        .typed-cursor { opacity: 1; animation: blink 0.7s infinite; font-weight: bold; color: var(--accent-blue); }
+        .typed-cursor { opacity: 1; animation: blink 0.7s infinite; font-weight: bold; color: var(--accent-color); }
         @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
 
         /* Infinite Marquee CSS */
@@ -137,18 +157,37 @@
         .marquee-content:hover { animation-play-state: paused; }
         @keyframes scrollMarquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
 
-        /* --- NEW: Transisi Dark Mode CSS --- */
-        body, .card, .bg-white, .text-dark, .text-muted, p, h1, h2, h3, h4, h5, h6, span {
+        /* --- Transisi Dark Mode CSS --- */
+        body, .card, .bg-white, .text-dark, .text-muted, p, h1, h2, h3, h4, h5, h6, span, li, a {
             transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
         }
         
-        body.dark-mode { background-color: #121212; color: #e0e0e0; }
-        body.dark-mode .bg-white, body.dark-mode .card { background-color: #1e1e2f !important; color: #e0e0e0; border-color: #333 !important; }
-        body.dark-mode .text-dark { color: #f8f9fa !important; }
-        body.dark-mode .text-muted { color: #adb5bd !important; }
-        body.dark-mode .category-subtitle, body.dark-mode .section-title { color: #60a5fa; }
-        body.dark-mode .cert-img { background-color: #2a2a3c; }
-        body.dark-mode .badge.bg-light { background-color: #2a2a3c !important; color: #e0e0e0 !important; border-color: #444 !important; }
+        body.dark-mode { background-color: #0f172a; color: #e2e8f0; } /* Latar belakang slate 900 */
+        
+        body.dark-mode .bg-white, body.dark-mode .card { background-color: #1e293b !important; color: #e2e8f0 !important; border-color: #334155 !important; }
+        body.dark-mode .text-dark, body.dark-mode h1, body.dark-mode h2, body.dark-mode h3, 
+        body.dark-mode h4, body.dark-mode h5, body.dark-mode h6, body.dark-mode p, body.dark-mode li { color: #f8fafc !important; }
+        body.dark-mode .text-muted { color: #94a3b8 !important; }
+        body.dark-mode .category-subtitle, body.dark-mode .section-title { color: var(--accent-color) !important; }
+        body.dark-mode .cert-img { background-color: #0f172a; }
+        body.dark-mode .badge.bg-light { background-color: #0f172a !important; color: #e2e8f0 !important; border-color: #334155 !important; }
+        body.dark-mode a.text-dark { color: #f8fafc !important; }
+        body.dark-mode a.text-dark:hover { color: var(--accent-color) !important; }
+
+        /* Spotlight Hover Effect pada Kartu Gelap */
+        body.dark-mode .card {
+            background-image: radial-gradient(
+                800px circle at var(--mouse-x, -500px) var(--mouse-y, -500px),
+                rgba(255, 255, 255, 0.06),
+                transparent 40%
+            );
+        }
+
+        /* Profile Image Hover Effect dengan filter warna disesuaikan ke Teal */
+        .profile-img-hover:hover { 
+            transform: scale(1.05) translateY(-5px); box-shadow: 0 15px 35px rgba(0,0,0,0.3) !important; 
+            filter: grayscale(0) sepia(0) hue-rotate(0deg) saturate(100%) brightness(1) contrast(1);
+        }
     </style>
 </head>
 <body>
@@ -168,13 +207,15 @@
                     <li class="nav-item"><a class="nav-link" href="#project">Proyek</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Keahlian</a></li>
                     <li class="nav-item"><a class="nav-link" href="#certificates">Sertifikat</a></li>
-                    </ul>
+                </ul>
             </div>
         </div>
     </nav>
 
     <header class="hero text-center">
         <div class="container">
+            <img src="pp.png" alt="Hiu Kencana Widhi" class="rounded-circle shadow-lg mb-4 profile-img-hover floating-anim" style="width: 150px; height: 150px; object-fit: cover; border: 4px solid rgba(255,255,255,0.2);" data-aos="zoom-in" onerror="this.src='https://via.placeholder.com/150'">
+
             <h1 class="display-4 fw-bold reveal-text">Hiu Kencana Widhi</h1>
             <p class="lead opacity-75 mt-2">
                 <span id="typed-text"></span><br>
@@ -183,6 +224,7 @@
             <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap" id="hero-btns" data-aos="fade-up" data-aos-delay="500">
                 <a href="mailto:hiu@engineer.com" class="btn btn-light btn-sm shadow-sm"><i class="bi bi-envelope"></i> Email</a>
                 <a href="https://www.linkedin.com/in/hiu-kencana-widhi" target="_blank" class="btn btn-outline-light btn-sm shadow-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                <a href="CV_Hiu_Kencana_Widhi_Teknik_Logistik_S1.pdf" class="btn btn-warning btn-sm fw-bold shadow-sm"><i class="bi bi-file-earmark-pdf"></i> Download CV</a>
             </div>
         </div>
     </header>
@@ -541,7 +583,7 @@
                         datasets: [{
                             label: 'Expertise Level',
                             data: [95, 90, 85, 80, 88, 85],
-                            backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 2, pointBackgroundColor: 'rgba(10, 35, 81, 1)'
+                            backgroundColor: 'rgba(20, 184, 166, 0.2)', borderColor: 'rgba(20, 184, 166, 1)', borderWidth: 2, pointBackgroundColor: 'rgba(15, 23, 42, 1)'
                         }]
                     },
                     options: { responsive: true, maintainAspectRatio: false, scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#e0e0e0' }, angleLines: { color: '#e0e0e0' } } }, plugins: { legend: { display: false } } }
@@ -589,7 +631,7 @@
             });
         });
 
-        // --- NEW 1: Injeksi Toggle Dark Mode ---
+        // Injeksi Toggle Dark Mode
         const navList = document.querySelector('.navbar-nav');
         const themeItem = document.createElement('li');
         themeItem.className = 'nav-item ms-lg-3 mt-2 mt-lg-0';
@@ -606,19 +648,17 @@
             }
         });
 
-        // --- NEW 2: Injeksi Animasi Number Counter ---
+        // Injeksi Animasi Number Counter
         function animateValue(obj, start, end, duration, prefix, suffix, isInt = false) {
             let startTimestamp = null;
             const step = (timestamp) => {
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                // Ease out quintic
                 const easeOut = 1 - Math.pow(1 - progress, 5);
                 let currentVal = (easeOut * end);
                 
                 if(isInt) {
                     currentVal = Math.floor(currentVal);
-                    // For titles replacing the number in parenthesis
                     obj.innerHTML = obj.dataset.originalHTML.replace(`(${end})`, `(${currentVal})`);
                 } else {
                     currentVal = currentVal.toFixed(2);
@@ -655,20 +695,24 @@
                         el.dataset.originalHTML = el.innerHTML;
                         animateValue(el, 0, 2, 2000, '', '', true);
                     }
-                    obs.unobserve(el); // Hanya eksekusi angka sekali
+                    obs.unobserve(el); 
                 }
             });
         }, { threshold: 0.5 });
 
         document.querySelectorAll('.count-target').forEach(el => counterObserver.observe(el));
 
-        // Download CV Script
-        const heroBtns = document.getElementById('hero-btns');
-        const downloadBtn = document.createElement('a');
-        downloadBtn.href = 'CV_Hiu_Kencana_Widhi_Teknik_Logistik_S1.pdf';
-        downloadBtn.className = 'btn btn-warning btn-sm fw-bold shadow-sm';
-        downloadBtn.innerHTML = '<i class="bi bi-file-earmark-pdf"></i> Download CV';
-        heroBtns.appendChild(downloadBtn);
+        // Efek Sorotan Senter pada Kartu di Mode Gelap
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
     </script>
 </body>
 </html>
