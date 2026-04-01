@@ -12,43 +12,148 @@
         :root { --primary-blue: #0a2351; --accent-blue: #3b82f6; }
         body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f9; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
         
+        /* 1. Scroll Progress Bar */
+        .scroll-progress { position: fixed; top: 0; left: 0; width: 0%; height: 4px; background: var(--accent-blue); z-index: 1060; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--accent-blue); }
+
+        /* --- Floating Glassmorphism Navbar --- */
+        .navbar.bg-dark {
+            position: fixed !important;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 1000px;
+            border-radius: 20px;
+            background-color: rgba(10, 35, 81, 0.65) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2) !important;
+            z-index: 1050;
+            padding: 10px 20px;
+        }
+
+        /* 2. Dynamic Gradient Background + Floating Particles */
         .hero { 
-            background: linear-gradient(135deg, var(--primary-blue) 0%, #1e40af 100%); 
+            position: relative;
+            background: linear-gradient(-45deg, var(--primary-blue), #1e40af, #0ea5e9, var(--primary-blue));
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: white; 
-            padding: 100px 0;
+            padding: 140px 0 100px;
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
         }
+        
+        .hero::before {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.15) 2px, transparent 2px);
+            background-size: 60px 60px;
+            animation: floatingParticles 40s linear infinite;
+            z-index: 1; pointer-events: none;
+        }
+        .hero::after {
+            content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px);
+            background-size: 35px 35px;
+            animation: floatingParticles 60s linear infinite reverse;
+            z-index: 1; pointer-events: none;
+        }
+        .hero .container { position: relative; z-index: 2; }
+
+        @keyframes gradientBG { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes floatingParticles { 0% { background-position: 0px 0px; } 100% { background-position: 600px 600px; } }
+
+        /* Text Reveal Animation untuk H1 */
+        .reveal-text {
+            display: inline-block; animation: reveal 1.2s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); transform: translateY(30px); opacity: 0;
+        }
+        @keyframes reveal { to { transform: translateY(0); opacity: 1; } }
 
         .section-title { font-weight: 700; color: var(--primary-blue); border-bottom: 3px solid var(--accent-blue); display: inline-block; margin-bottom: 30px; padding-bottom: 5px; }
         
-        .card { border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 12px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .hover-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; }
+        /* 3. Super Smooth Shine Hover Effect pada Card */
+        .card { 
+            border: none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 12px; 
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1); position: relative; overflow: hidden; 
+        }
+        .hover-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: 0 20px 35px rgba(0,0,0,0.08) !important; }
+        .hover-card::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+            transform: skewX(-25deg); transition: 0.7s ease-out; z-index: 1; pointer-events: none;
+        }
+        .hover-card:hover::after { left: 125%; }
         
+        .card i { transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); display: inline-block; }
+        .hover-card:hover i { transform: scale(1.2) translateY(-2px); }
+
         .timeline-item { border-left: 2px solid var(--accent-blue); padding-left: 20px; position: relative; padding-bottom: 20px; }
-        .timeline-item::before { content: ""; position: absolute; width: 12px; height: 12px; background: var(--accent-blue); border-radius: 50%; left: -7px; top: 5px; }
+        .timeline-item::before { 
+            content: ""; position: absolute; width: 12px; height: 12px; background: var(--accent-blue); 
+            border-radius: 50%; left: -7px; top: 5px; transition: transform 0.3s ease; animation: dotPulse 2s infinite;
+        }
+        .timeline-item:hover::before { transform: scale(1.5); box-shadow: 0 0 10px var(--accent-blue); animation: none; }
+        @keyframes dotPulse { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
         
-        .cert-img { object-fit: contain; background-color: #f8f9fa; width: 100%; height: 160px; transition: 0.3s; }
-        .hover-card:hover .cert-img { transform: scale(1.05); }
+        .cert-img { object-fit: contain; background-color: #f8f9fa; width: 100%; height: 160px; transition: 0.5s cubic-bezier(0.25, 1, 0.5, 1); }
+        .hover-card:hover .cert-img { transform: scale(1.06); }
         
         .category-subtitle { color: var(--primary-blue); font-weight: 600; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
         .justify-text { text-align: justify; text-justify: inter-word; }
-
-        /* Chart Container Styling */
         .chart-container { position: relative; margin: auto; height: 300px; width: 100%; max-width: 500px; }
 
+        /* 4. Floating Animation dengan Injeksi Variabel Parallax */
+        .floating-anim { animation: floatAnim 4s ease-in-out infinite; }
+        @keyframes floatAnim {
+            0% { transform: translateY(var(--parallax-y, 0px)); }
+            50% { transform: translateY(calc(var(--parallax-y, 0px) - 10px)); }
+            100% { transform: translateY(var(--parallax-y, 0px)); }
+        }
+
+        /* Tombol Interaktif */
+        .btn { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s; }
         .btn-whatsapp {
             position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; 
             z-index: 1000; font-size: 2rem; display: flex; align-items: center; justify-content: center;
-            animation: pulse 2s infinite;
+            animation: whatsappPulse 2s infinite; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        .btn-whatsapp:hover { animation: none; }
+        @keyframes whatsappPulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+
+        .typed-cursor { opacity: 1; animation: blink 0.7s infinite; font-weight: bold; color: var(--accent-blue); }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
+        /* Infinite Marquee CSS */
+        .marquee-container {
+            display: flex; overflow: hidden; white-space: nowrap;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
+        .marquee-content {
+            display: flex; gap: 0.5rem; min-width: max-content;
+            animation: scrollMarquee 15s linear infinite;
+        }
+        .marquee-content:hover { animation-play-state: paused; }
+        @keyframes scrollMarquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+
+        /* --- NEW: Transisi Dark Mode CSS --- */
+        body, .card, .bg-white, .text-dark, .text-muted, p, h1, h2, h3, h4, h5, h6, span {
+            transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        body.dark-mode { background-color: #121212; color: #e0e0e0; }
+        body.dark-mode .bg-white, body.dark-mode .card { background-color: #1e1e2f !important; color: #e0e0e0; border-color: #333 !important; }
+        body.dark-mode .text-dark { color: #f8f9fa !important; }
+        body.dark-mode .text-muted { color: #adb5bd !important; }
+        body.dark-mode .category-subtitle, body.dark-mode .section-title { color: #60a5fa; }
+        body.dark-mode .cert-img { background-color: #2a2a3c; }
+        body.dark-mode .badge.bg-light { background-color: #2a2a3c !important; color: #e0e0e0 !important; border-color: #444 !important; }
     </style>
 </head>
 <body>
+
+    <div class="scroll-progress" id="progressBar"></div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
         <div class="container">
@@ -57,22 +162,25 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto text-center">
+                <ul class="navbar-nav ms-auto text-center align-items-center">
                     <li class="nav-item"><a class="nav-link" href="#profile">Profil</a></li>
                     <li class="nav-item"><a class="nav-link" href="#experience">Pengalaman</a></li>
                     <li class="nav-item"><a class="nav-link" href="#project">Proyek</a></li>
                     <li class="nav-item"><a class="nav-link" href="#skills">Keahlian</a></li>
                     <li class="nav-item"><a class="nav-link" href="#certificates">Sertifikat</a></li>
-                </ul>
+                    </ul>
             </div>
         </div>
     </nav>
 
     <header class="hero text-center">
-        <div class="container" data-aos="zoom-in">
-            <h1 class="display-4 fw-bold">Hiu Kencana Widhi</h1>
-            <p class="lead opacity-75">S1 Teknik Logistik | Logistics Operations & Data Analysis <br>Sidoarjo, Jawa Timur</p>
-            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap" id="hero-btns">
+        <div class="container">
+            <h1 class="display-4 fw-bold reveal-text">Hiu Kencana Widhi</h1>
+            <p class="lead opacity-75 mt-2">
+                <span id="typed-text"></span><br>
+                Sidoarjo, Jawa Timur
+            </p>
+            <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap" id="hero-btns" data-aos="fade-up" data-aos-delay="500">
                 <a href="mailto:hiu@engineer.com" class="btn btn-light btn-sm shadow-sm"><i class="bi bi-envelope"></i> Email</a>
                 <a href="https://www.linkedin.com/in/hiu-kencana-widhi" target="_blank" class="btn btn-outline-light btn-sm shadow-sm"><i class="bi bi-linkedin"></i> LinkedIn</a>
             </div>
@@ -90,19 +198,19 @@
                     Berorientasi pada disiplin, kecepatan belajar, dan mampu berkontribusi maksimal dalam tim teknis maupun operasional.
                 </p>
             </div>
-            <div class="col-lg-4 text-lg-end">
-                <div class="p-4 bg-white rounded shadow-sm border-start border-primary border-4">
+            <div class="col-lg-4 text-lg-end" data-aos="fade-left" data-aos-delay="200">
+                <div class="p-4 bg-white rounded shadow-sm border-start border-primary border-4 floating-anim">
                     <h6 class="fw-bold mb-1 mt-3">Sarjana (S1)</h6>
                     <p class="text-primary small fw-bold mb-0">Teknik Logistik </p>
                     <p class="text-muted small">Institut Teknologi Insan Cendekia Mandiri <br>(Sidoarjo, Jawa Timur)</p>
                     <div class="mb-3">
-                        <span class="badge bg-info p-2 shadow-sm text-white">IPK: 3.85 / 4.00</span> 
+                        <span class="badge bg-info p-2 shadow-sm text-white count-target">IPK: 3.85 / 4.00</span> 
                     </div>
                     <h6 class="fw-bold mb-1 mt-2">Vokasi (SMK)</h6>
                     <p class="text-primary small fw-bold mb-0">Teknik Komputer & Jaringan (TKJ)</p>
                     <p class="text-muted small mb-1">SMK Muhammadiyah Kajen <br>(Pekalongan, Jawa Tengah)</p>
                     <div>
-                        <span class="badge bg-info p-2 shadow-sm text-white">Nilai Ijazah: 88.88 / 100</span>
+                        <span class="badge bg-info p-2 shadow-sm text-white count-target">Nilai Ijazah: 88.88 / 100</span>
                     </div>
                 </div>
             </div>
@@ -111,7 +219,7 @@
         <section id="experience" class="mb-5" data-aos="fade-up">
             <h2 class="section-title">Pengalaman Kerja & Magang</h2>
             <div class="card p-4 shadow-sm">
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="100">
                     <h5 class="fw-bold">Magang - Operasional Lapangan (Cargo)</h5>
                     <p class="text-primary mb-1">PT. Dian Mega Kurnia | Bandara Juanda</p>
                     <ul class="text-muted small">
@@ -120,7 +228,7 @@
                         <li>Instalasi dan pengecekan perangkat jaringan WiFi operasional.</li>
                     </ul>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
                     <h5 class="fw-bold">Magang - Teknisi Lapangan</h5>
                     <p class="text-primary mb-1">PT. Telkom Indonesia | Batang, Jawa Tengah</p>
                     <ul class="text-muted small">
@@ -128,7 +236,7 @@
                         <li>Analisis dan penanganan gangguan teknis jaringan internet.</li>
                     </ul>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
                     <h5 class="fw-bold">Freelance - Instalasi WiFi</h5>
                     <p class="text-primary mb-1">Independen | Sidoarjo</p>
                     <p class="small text-muted">Melakukan pemasangan dan troubleshooting perangkat jaringan internet mandiri.</p>
@@ -138,7 +246,7 @@
 
         <section id="project" class="mb-5" data-aos="fade-up">
             <h2 class="section-title">Proyek Unggulan</h2>
-            <div class="card bg-dark text-white shadow-lg border-0 overflow-hidden">
+            <div class="card bg-dark text-white shadow-lg border-0 overflow-hidden hover-card">
                 <div class="row g-0">
                     <div class="col-lg-5 p-5 d-flex flex-column justify-content-center">
                         <h5 class="text-info fw-bold mb-1">TUGAS AKHIR / SKRIPSI</h5>
@@ -146,17 +254,17 @@
                         <p class="opacity-75 mb-4 small justify-text">
                             Redesain tata letak kargo menggunakan metode <strong>Systematic Layout Planning (SLP)</strong> untuk mereduksi jarak tempuh dan mengeliminasi bottleneck. Fokus pada efisiensi ruang dan alur distribusi kargo udara.
                         </p>
-                        <div class="p-3 border border-secondary rounded mb-2">
+                        <div class="p-3 border border-secondary rounded mb-2" data-aos="zoom-in" data-aos-delay="100">
                             <h6 class="text-info small mb-1"><i class="bi bi-graph-up"></i> Hasil Analisis</h6>
                             <p class="small mb-0 opacity-75">Reduksi jarak material handling & peningkatan efisiensi ruang.</p>
                         </div>
                     </div>
                     <div class="col-lg-7 bg-dark p-4 d-flex flex-column gap-4 justify-content-center border-start border-secondary text-center">
-                        <div>
+                        <div class="floating-anim">
                             <img src="111.png" alt="3D Layout" class="img-fluid rounded mb-2" style="max-height: 300px;" onerror="this.src='https://via.placeholder.com/600x350?text=3D+Layout+SketchUp'">
                             <p class="small text-info fw-bold opacity-75">Pemodelan 3D SketchUp</p>
                         </div>
-                        <div>
+                        <div style="animation-delay: 2s;" class="floating-anim">
                             <img src="222.png" alt="Grafik Efisiensi" class="img-fluid rounded mb-2" style="max-height: 200px;" onerror="this.src='https://via.placeholder.com/600x250?text=Grafik+Efisiensi+Data'">
                             <p class="small mb-0 text-info fw-bold opacity-75">Grafik Peningkatan Efisiensi</p>
                         </div>
@@ -169,7 +277,7 @@
             <h2 class="section-title">Technical Expertise & Competencies</h2>
             
             <div class="row mb-4">
-                <div class="col-12">
+                <div class="col-12" data-aos="zoom-in" data-aos-delay="100">
                     <div class="card p-4 shadow-sm text-center">
                         <h5 class="fw-bold mb-4"><i class="bi bi-graph-up-arrow text-primary me-2"></i>Skill Matrix Analysis</h5>
                         <div class="chart-container">
@@ -181,7 +289,7 @@
             </div>
 
             <div class="row g-4">
-                <div class="col-md-6">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100 p-4 border-start border-success border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-file-earmark-excel fs-2 text-success me-3"></i>
@@ -189,15 +297,15 @@
                         </div>
                         <p class="small text-muted mb-3">Mampu mengolah data operasional logistik yang kompleks menjadi wawasan strategis menggunakan:</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-light text-dark border p-2">Pivot Tables & Charts</span>
-                            <span class="badge bg-light text-dark border p-2">VLOOKUP, HLOOKUP, XLOOKUP</span>
-                            <span class="badge bg-light text-dark border p-2">Logic Functions (Nested IF)</span>
-                            <span class="badge bg-light text-dark border p-2">Data Cleaning & Validation</span>
-                            <span class="badge bg-light text-dark border p-2">Linear Regression & Trend Analysis</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Pivot Tables & Charts</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">VLOOKUP, HLOOKUP, XLOOKUP</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Logic Functions (Nested IF)</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Data Cleaning & Validation</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Linear Regression & Trend Analysis</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100 p-4 border-start border-primary border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-box-seam fs-2 text-primary me-3"></i>
@@ -205,15 +313,15 @@
                         </div>
                         <p class="small text-muted mb-3">Spesialisasi dalam optimasi tata letak fasilitas industri dengan kompetensi:</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-light text-dark border p-2">SLP Methodology</span>
-                            <span class="badge bg-light text-dark border p-2">SketchUp (3D Modeling)</span>
-                            <span class="badge bg-light text-dark border p-2">Material Flow Analysis</span>
-                            <span class="badge bg-light text-dark border p-2">Activity Relationship Charting</span>
-                            <span class="badge bg-light text-dark border p-2">Bottleneck Identification</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">SLP Methodology</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">SketchUp (3D Modeling)</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Material Flow Analysis</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Activity Relationship Charting</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Bottleneck Identification</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100 p-4 border-start border-info border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-hdd-network fs-2 text-info me-3"></i>
@@ -221,14 +329,14 @@
                         </div>
                         <p class="small text-muted mb-3">Memastikan kelancaran sistem informasi logistik melalui infrastruktur digital:</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-light text-dark border p-2">Fiber Optic & FTTH Installation</span>
-                            <span class="badge bg-light text-dark border p-2">Local Area Network (LAN)</span>
-                            <span class="badge bg-light text-dark border p-2">WiFi Troubleshooting</span>
-                            <span class="badge bg-light text-dark border p-2">Network Administration</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Fiber Optic & FTTH Installation</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Local Area Network (LAN)</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">WiFi Troubleshooting</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Network Administration</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="card h-100 p-4 border-start border-warning border-4 shadow-sm hover-card">
                         <div class="d-flex align-items-center mb-3">
                             <i class="bi bi-graph-up-arrow fs-2 text-warning me-3"></i>
@@ -236,10 +344,10 @@
                         </div>
                         <p class="small text-muted mb-3">Kemampuan analisis statistik untuk riset operasional dan pengambilan keputusan:</p>
                         <div class="d-flex flex-wrap gap-2">
-                            <span class="badge bg-light text-dark border p-2">SEM-PLS (SmartPLS 4.0)</span>
-                            <span class="badge bg-light text-dark border p-2">Descriptive Statistics (SPSS)</span>
-                            <span class="badge bg-light text-dark border p-2">IBM Data Science Foundation</span>
-                            <span class="badge bg-light text-dark border p-2">Regression & Correlation Analysis</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">SEM-PLS (SmartPLS 4.0)</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Descriptive Statistics (SPSS)</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">IBM Data Science Foundation</span>
+                            <span class="badge bg-light text-dark border p-2 shadow-sm">Regression & Correlation Analysis</span>
                         </div>
                     </div>
                 </div>
@@ -250,9 +358,9 @@
             <h2 class="section-title">Sertifikasi & Pengembangan</h2>
 
             <div class="mb-5">
-                <h5 class="category-subtitle"><i class="bi bi-cpu text-primary"></i> Pelatihan Online IBM (11)</h5>
+                <h5 class="category-subtitle count-target"><i class="bi bi-cpu text-primary"></i> Pelatihan Online IBM (11)</h5>
                 <div class="row g-3">
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
                         <a href="https://courses.cognitiveclass.ai/certificates/ed2f7849fa5c42259263117178d64703" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Visualization with Python-1.png" class="cert-img p-2" alt="IBM Data Viz" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Data+Viz'">
@@ -260,7 +368,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="150">
                         <a href="https://courses.cognitiveclass.ai/certificates/705774056fef4e82897429131ad0a438" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Analysis with Python-1.png" class="cert-img p-2" alt="IBM Data Analyst" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Data+Analyst'">
@@ -268,7 +376,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
                         <a href="https://courses.cognitiveclass.ai/certificates/2f296c0152e14a238916a1c2cd375e0b" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Science Tools-1.png" class="cert-img p-2" alt="IBM Tools" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Tools'">
@@ -276,7 +384,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="250">
                         <a href="https://courses.cognitiveclass.ai/certificates/d4a81BSN7gxmPWYCAKJgA9aH4yNuERpTvs4uiX" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="IBM Cloud Essentials-1.png" class="cert-img p-2" alt="IBM Cloud" onerror="this.src='https://via.placeholder.com/300x200?text=IBM+Cloud'">
@@ -284,7 +392,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="300">
                         <a href="https://courses.cognitiveclass.ai/certificates/721cd005a3894d1da8e978041e794032" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Introduction to Cloud-1.png" class="cert-img p-2" alt="Intro Cloud" onerror="this.src='https://via.placeholder.com/300x200?text=Intro+Cloud'">
@@ -292,7 +400,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="350">
                         <a href="https://courses.cognitiveclass.ai/certificates/a8d56615cd854a4c9f9509c06a345549" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Science 101-1.png" class="cert-img p-2" alt="DS 101" onerror="this.src='https://via.placeholder.com/300x200?text=DS+101'">
@@ -300,7 +408,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="400">
                         <a href="https://courses.cognitiveclass.ai/certificates/100966010d924fb1951391df0ca9c471" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Data Science Methodology-1.png" class="cert-img p-2" alt="Methodology" onerror="this.src='https://via.placeholder.com/300x200?text=Methodology'">
@@ -308,7 +416,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="450">
                         <a href="https://courses.cognitiveclass.ai/certificates/3333914501bf4d0b8469bdfe105b1c04" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="PROMP ENGINEER-1.png" class="cert-img p-2" alt="Prompt Eng" onerror="this.src='https://via.placeholder.com/300x200?text=Prompt+Eng'">
@@ -316,7 +424,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="500">
                         <a href="https://courses.cognitiveclass.ai/certificates/b4692f9f84d54def882bc754e36790d2" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Digital Analytics  Regression-1.png" class="cert-img p-2" alt="Analytics" onerror="this.src='https://via.placeholder.com/300x200?text=Analytics'">
@@ -324,7 +432,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="550">
                         <a href="https://courses.cognitiveclass.ai/certificates/1ee3eafa32084f93bd815b73e93eb8ce" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Statistics 101-1.png" class="cert-img p-2" alt="Statistics" onerror="this.src='https://via.placeholder.com/300x200?text=Statistics'">
@@ -332,7 +440,7 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-6 col-md-4">
+                    <div class="col-6 col-md-4" data-aos="zoom-in-up" data-aos-delay="600">
                         <a href="https://courses.cognitiveclass.ai/certificates/c9658202b47a4aed9f1b42e8c6ece072" target="_blank" class="text-decoration-none text-dark">
                             <div class="card h-100 hover-card">
                                 <img src="Big Data 101-1.png" class="cert-img p-2" alt="Big Data" onerror="this.src='https://via.placeholder.com/300x200?text=Big+Data'">
@@ -344,21 +452,21 @@
             </div>
 
             <div class="mb-5">
-                <h5 class="category-subtitle"><i class="bi bi-megaphone text-primary"></i> Seminar Nasional (3)</h5>
+                <h5 class="category-subtitle count-target"><i class="bi bi-megaphone text-primary"></i> Seminar Nasional (3)</h5>
                 <div class="row g-3">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="card h-100 hover-card text-center">
                             <img src="hiu+seminar+sofeware+enginer+telkom-1.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Software+Eng'">
                             <div class="card-body p-2 small fw-bold">Software Engineering - Telkom</div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="card h-100 hover-card text-center">
                             <img src="hiu+seminar bisnis+dan+kewirausahaan+uinsa.jpg" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Bisnis+UINSA'">
                             <div class="card-body p-2 small fw-bold">Bisnis & Kewirausahaan - UINSA</div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" data-aos="zoom-in-up" data-aos-delay="300">
                         <div class="card h-100 hover-card text-center">
                             <img src="hiu+seminar+public+speaking+informatika+iticm-1.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Speaking+Up'">
                             <div class="card-body p-2 small fw-bold">Speaking Up - ITICM Sidoarjo</div>
@@ -368,15 +476,15 @@
             </div>
 
             <div>
-                <h5 class="category-subtitle"><i class="bi bi-people text-primary"></i> Organisasi & Kepanitiaan (2)</h5>
+                <h5 class="category-subtitle count-target"><i class="bi bi-people text-primary"></i> Organisasi & Kepanitiaan (2)</h5>
                 <div class="row g-3">
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" data-aos="zoom-in-up" data-aos-delay="100">
                         <div class="card h-100 hover-card text-center">
                             <img src="hiu+panitia+seminar+transformation+suplay chain+teklog+iticm.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Digital+Trans'">
                             <div class="card-body p-2 small fw-bold">Panitia Digital Transformation</div>
                         </div>
                     </div>
-                    <div class="col-12 col-md-4">
+                    <div class="col-12 col-md-4" data-aos="zoom-in-up" data-aos-delay="200">
                         <div class="card h-100 hover-card text-center">
                             <img src="hiu+panitia+ kordinator+ makrab+teklog+iticm-1.png" class="cert-img p-2" onerror="this.src='https://via.placeholder.com/300x200?text=Makrab'">
                             <div class="card-body p-2 small fw-bold">Koordinator Makrab Logistik</div>
@@ -393,47 +501,166 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/6285174208810" target="_blank" class="btn btn-success rounded-circle shadow-lg btn-whatsapp d-flex align-items-center justify-content-center" style="position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; z-index: 1000; font-size: 2rem;">
+    <a href="https://wa.me/6285174208810" target="_blank" class="btn btn-success rounded-circle shadow-lg btn-whatsapp d-flex align-items-center justify-content-center">
         <i class="bi bi-whatsapp"></i>
     </a>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     
     <script>
-        AOS.init({ duration: 1000, once: true });
+        // Init AOS
+        AOS.init({ duration: 1000, once: false, mirror: true, offset: -100 });
 
-        // Chart Matrix Radar
-        const ctx = document.getElementById('skillsChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'radar',
-            data: {
-                labels: ['Excel/Data', 'Layout SLP', '3D SketchUp', 'Networking', 'Warehouse Ops', 'Statistics'],
-                datasets: [{
-                    label: 'Expertise Level',
-                    data: [95, 90, 85, 80, 88, 85],
-                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
-                    borderColor: 'rgba(59, 130, 246, 1)',
-                    borderWidth: 2,
-                    pointBackgroundColor: 'rgba(10, 35, 81, 1)'
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    r: { 
-                        beginAtZero: true, 
-                        max: 100, 
-                        ticks: { display: false },
-                        grid: { color: '#e0e0e0' },
-                        angleLines: { color: '#e0e0e0' }
-                    }
-                },
-                plugins: { legend: { display: false } }
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Teks Mengetik
+        new Typed('#typed-text', {
+            strings: ['S1 Teknik Logistik', 'Logistics Operations', 'Data Analysis', 'S1 Teknik Logistik | Logistics Operations & Data Analysis'],
+            typeSpeed: 50, backSpeed: 30, backDelay: 1200, startDelay: 500, showCursor: true, cursorChar: '|', loop: false 
+        });
+
+        // Draw-on-Scroll Chart.js
+        let chartRendered = false;
+        const chartCanvas = document.getElementById('skillsChart');
+        const observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting && !chartRendered) {
+                const ctx = chartCanvas.getContext('2d');
+                new Chart(ctx, {
+                    type: 'radar',
+                    data: {
+                        labels: ['Excel/Data', 'Layout SLP', '3D SketchUp', 'Networking', 'Warehouse Ops', 'Statistics'],
+                        datasets: [{
+                            label: 'Expertise Level',
+                            data: [95, 90, 85, 80, 88, 85],
+                            backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: 'rgba(59, 130, 246, 1)', borderWidth: 2, pointBackgroundColor: 'rgba(10, 35, 81, 1)'
+                        }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, scales: { r: { beginAtZero: true, max: 100, ticks: { display: false }, grid: { color: '#e0e0e0' }, angleLines: { color: '#e0e0e0' } } }, plugins: { legend: { display: false } } }
+                });
+                chartRendered = true;
+                observer.unobserve(chartCanvas); 
+            }
+        }, { threshold: 0.3 });
+        observer.observe(chartCanvas);
+
+        // Infinite Marquee pada Tag Keahlian
+        document.querySelectorAll('#skills .d-flex.flex-wrap.gap-2').forEach(container => {
+            container.classList.remove('flex-wrap'); 
+            container.classList.add('marquee-container');
+            const originalContent = container.innerHTML;
+            container.innerHTML = `<div class="marquee-content">${originalContent}${originalContent}</div>`;
+        });
+
+        // Magnetic Hover
+        const magneticBtns = document.querySelectorAll('#hero-btns .btn, .btn-whatsapp');
+        magneticBtns.forEach(btn => {
+            btn.addEventListener('mousemove', (e) => {
+                const rect = btn.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+                btn.style.transition = 'none';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = '';
+                btn.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
+            });
+        });
+
+        // Parallax 3D Halus
+        const parallaxImages = document.querySelectorAll('#project .floating-anim');
+        window.addEventListener('scroll', () => {
+            parallaxImages.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                if(rect.top < window.innerHeight && rect.bottom > 0) {
+                    const speed = index === 0 ? -0.04 : -0.08; 
+                    const yOffset = (rect.top - window.innerHeight / 2) * speed;
+                    el.style.setProperty('--parallax-y', `${yOffset}px`);
+                }
+            });
+        });
+
+        // --- NEW 1: Injeksi Toggle Dark Mode ---
+        const navList = document.querySelector('.navbar-nav');
+        const themeItem = document.createElement('li');
+        themeItem.className = 'nav-item ms-lg-3 mt-2 mt-lg-0';
+        themeItem.innerHTML = `<button id="themeToggle" class="btn btn-sm btn-outline-light rounded-circle" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; margin: auto;"><i class="bi bi-moon-fill"></i></button>`;
+        navList.appendChild(themeItem);
+
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const icon = this.querySelector('i');
+            if(document.body.classList.contains('dark-mode')) {
+                icon.className = 'bi bi-sun-fill text-warning';
+            } else {
+                icon.className = 'bi bi-moon-fill';
             }
         });
+
+        // --- NEW 2: Injeksi Animasi Number Counter ---
+        function animateValue(obj, start, end, duration, prefix, suffix, isInt = false) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                // Ease out quintic
+                const easeOut = 1 - Math.pow(1 - progress, 5);
+                let currentVal = (easeOut * end);
+                
+                if(isInt) {
+                    currentVal = Math.floor(currentVal);
+                    // For titles replacing the number in parenthesis
+                    obj.innerHTML = obj.dataset.originalHTML.replace(`(${end})`, `(${currentVal})`);
+                } else {
+                    currentVal = currentVal.toFixed(2);
+                    obj.textContent = prefix + currentVal + suffix;
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    if(isInt) obj.innerHTML = obj.dataset.originalHTML;
+                    else obj.textContent = prefix + end.toFixed(2) + suffix;
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        const counterObserver = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    const el = entry.target;
+                    const text = el.textContent;
+                    
+                    if(text.includes('IPK:')) {
+                        animateValue(el, 0, 3.85, 2000, 'IPK: ', ' / 4.00', false);
+                    } else if(text.includes('Nilai Ijazah:')) {
+                        animateValue(el, 0, 88.88, 2000, 'Nilai Ijazah: ', ' / 100', false);
+                    } else if(text.includes('(11)')) {
+                        el.dataset.originalHTML = el.innerHTML;
+                        animateValue(el, 0, 11, 2000, '', '', true);
+                    } else if(text.includes('(3)')) {
+                        el.dataset.originalHTML = el.innerHTML;
+                        animateValue(el, 0, 3, 2000, '', '', true);
+                    } else if(text.includes('(2)')) {
+                        el.dataset.originalHTML = el.innerHTML;
+                        animateValue(el, 0, 2, 2000, '', '', true);
+                    }
+                    obs.unobserve(el); // Hanya eksekusi angka sekali
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.count-target').forEach(el => counterObserver.observe(el));
 
         // Download CV Script
         const heroBtns = document.getElementById('hero-btns');
