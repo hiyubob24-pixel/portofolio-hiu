@@ -383,7 +383,7 @@
             display: flex;
             overflow: hidden;
             user-select: none;
-            padding: 3rem 0;
+            padding: 8rem 0;
             mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
             -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
         }
@@ -396,19 +396,19 @@
             display: flex;
             flex-shrink: 0;
             align-items: center;
-            padding-left: 30px;
-            animation: scrollStack 30s linear infinite;
+            padding-left: 0px;
+            animation: scrollStack 25s linear infinite;
         }
 
         .software-item-stack {
             position: relative;
-            width: 100px;
-            height: 110px;
+            width: 150px;
+            height: 200px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-left: -30px; /* Efek Menumpuk (Overlapping) */
+            margin-left: -10px; /* Efek Menumpuk (Overlapping) */
             background: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
@@ -429,8 +429,8 @@
         }
 
         .software-item-stack img {
-            width: 45px;
-            height: 45px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
             transition: transform 0.3s;
         }
