@@ -358,6 +358,207 @@
             filter: brightness(1.1);
         }
 
+        .project-tech-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.24);
+            background: rgba(15, 23, 42, 0.55);
+            color: #e2e8f0;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .project-preview-shell {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            padding: 2rem;
+            background:
+                radial-gradient(circle at top right, rgba(20, 184, 166, 0.18), transparent 35%),
+                linear-gradient(145deg, rgba(15, 23, 42, 0.94), rgba(2, 6, 23, 0.98));
+        }
+
+        .project-mini-card {
+            height: 100%;
+            padding: 1.15rem;
+            border-radius: 1.25rem;
+            border: 1px solid rgba(148, 163, 184, 0.18);
+            background: rgba(15, 23, 42, 0.46);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .project-mini-card ul {
+            padding-left: 1rem;
+            margin-bottom: 0;
+        }
+
+        .project-mini-card li {
+            color: rgba(226, 232, 240, 0.78);
+            font-size: 0.88rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .project-mini-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-mini-icon {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.9rem;
+            border-radius: 14px;
+            background: rgba(20, 184, 166, 0.14);
+            border: 1px solid rgba(45, 212, 191, 0.2);
+            color: #5eead4;
+            font-size: 1.1rem;
+        }
+
+        .project-note {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.85rem;
+            padding: 1rem 1.1rem;
+            border-radius: 1.25rem;
+            background: rgba(20, 184, 166, 0.12);
+            border: 1px solid rgba(45, 212, 191, 0.18);
+            color: rgba(226, 232, 240, 0.86);
+        }
+
+        .project-note i {
+            margin-top: 0.15rem;
+            color: #5eead4;
+            font-size: 1rem;
+        }
+
+        .project-link-box {
+            background: rgba(20, 184, 166, 0.12);
+            border-color: rgba(45, 212, 191, 0.25) !important;
+        }
+
+        .project-link-box .text-break {
+            color: #99f6e4;
+        }
+
+        .project-side-card {
+            height: 100%;
+            padding: 1rem 1.05rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            background: rgba(15, 23, 42, 0.42);
+        }
+
+        .project-side-card h6 {
+            margin-bottom: 0.7rem;
+            color: #f8fafc;
+            font-weight: 700;
+        }
+
+        .project-side-card ul {
+            padding-left: 1rem;
+            margin-bottom: 0;
+        }
+
+        .project-side-card li {
+            color: rgba(226, 232, 240, 0.78);
+            font-size: 0.85rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .project-side-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-browser {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.4rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            background: rgba(2, 6, 23, 0.78);
+            box-shadow: 0 24px 45px rgba(2, 6, 23, 0.28);
+        }
+
+        .project-browser-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+            background: rgba(15, 23, 42, 0.92);
+        }
+
+        .project-browser-dots {
+            display: flex;
+            gap: 0.45rem;
+            flex-shrink: 0;
+        }
+
+        .project-browser-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        .project-browser-dots span:nth-child(1) { background: #fb7185; }
+        .project-browser-dots span:nth-child(2) { background: #fbbf24; }
+        .project-browser-dots span:nth-child(3) { background: #34d399; }
+
+        .project-browser-url {
+            flex: 1;
+            min-width: 0;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(30, 41, 59, 0.95);
+            color: rgba(226, 232, 240, 0.82);
+            font-size: 0.78rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .project-live-frame {
+            width: 100%;
+            height: clamp(680px, 88vh, 920px);
+            min-height: 680px;
+            border: 0;
+            display: block;
+            background: #fff;
+        }
+
+        .project-frame-hint {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.95rem 1rem;
+            border-radius: 1rem;
+            background: rgba(15, 23, 42, 0.56);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            color: rgba(226, 232, 240, 0.84);
+        }
+
+        .project-frame-hint i {
+            color: #5eead4;
+            margin-top: 0.1rem;
+        }
+
+        @media (max-width: 991.98px) {
+            .project-preview-shell {
+                padding: 1.5rem;
+            }
+
+            .project-live-frame {
+                height: 720px;
+                min-height: 720px;
+            }
+        }
+
         /* Animasi untuk dark mode toggle */
         #themeToggle i {
             transition: transform 0.5s;
@@ -554,6 +755,143 @@
 
         <section id="project" class="mb-5" data-aos="fade-up">
             <h2 class="section-title">Proyek Unggulan</h2>
+            
+            <!-- Proyek 1: Web Project (WMS) -->
+            <div class="card bg-dark text-white shadow-lg border-0 overflow-hidden hover-card mb-4">
+                <div class="row g-0">
+                    <div class="col-lg-5 p-5 d-flex flex-column justify-content-between h-100">
+                        <div>
+                            <h5 class="text-info fw-bold mb-1">WEB PROJECT</h5>
+                            <h3 class="fw-bold mb-3">Warehouse Management System (WMS)</h3>
+                            <p class="opacity-75 mb-3 small justify-text">
+                                Aplikasi Warehouse Management System berbasis web untuk membantu admin gudang mengelola alur barang masuk, barang keluar, stok, rak penyimpanan, dan laporan operasional dalam satu dashboard.
+                            </p>
+                            <p class="opacity-75 mb-4 small justify-text">
+                                Dari halaman demo yang aktif, sistem ini memiliki modul inbound, outbound, master barang, master rak, manajemen user, monitoring stok, laporan grafik, serta asisten AI untuk membantu admin membaca kondisi gudang lebih cepat.
+                            </p>
+                            <div class="d-flex flex-wrap gap-2 mb-4">
+                                <span class="project-tech-pill">Barang Masuk</span>
+                                <span class="project-tech-pill">Barang Keluar</span>
+                                <span class="project-tech-pill">Monitoring Stok</span>
+                                <span class="project-tech-pill">Laporan & Grafik</span>
+                                <span class="project-tech-pill">AI Assistant</span>
+                            </div>
+                            <div class="p-3 border border-secondary rounded mb-3" data-aos="zoom-in" data-aos-delay="100">
+                                <h6 class="text-info small mb-1"><i class="bi bi-key"></i> Login Admin Demo</h6>
+                                <p class="small mb-0 opacity-75">
+                                    Email: <strong>hiu@admin.com</strong><br>
+                                    Password: <strong>hiu@admin.com</strong>
+                                </p>
+                            </div>
+                            <div class="p-3 border rounded mb-4 project-link-box">
+                                <h6 class="text-info small mb-1"><i class="bi bi-link-45deg"></i> Link Demo Aktif</h6>
+                                <p class="small mb-0 opacity-75">
+                                    Akses login aplikasi tersedia di:
+                                    <span class="d-block mt-1 text-break fw-semibold">http://wms-hiu.full.diskon.cloud/login</span>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6 col-lg-12 col-xl-6">
+                                    <div class="project-side-card">
+                                        <h6><i class="bi bi-diagram-3 me-2 text-info"></i>Fokus Sistem</h6>
+                                        <ul>
+                                            <li>Mencatat alur inbound dan outbound dengan lebih tertib</li>
+                                            <li>Memantau posisi stok dan lokasi rak secara cepat</li>
+                                            <li>Menyederhanakan kontrol data produk dan user admin</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-12 col-xl-6">
+                                    <div class="project-side-card">
+                                        <h6><i class="bi bi-check2-circle me-2 text-info"></i>Nilai untuk Admin</h6>
+                                        <ul>
+                                            <li>Dashboard lebih ringkas untuk pengambilan keputusan</li>
+                                            <li>Laporan dan grafik memudahkan evaluasi operasional</li>
+                                            <li>Proses kerja gudang menjadi lebih rapi dan terukur</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex flex-wrap gap-2">
+                                <a href="http://wms-hiu.full.diskon.cloud/login" target="_blank" rel="noopener noreferrer" class="btn btn-info text-dark fw-semibold">
+                                    <i class="bi bi-box-arrow-up-right"></i> Buka Login Demo
+                                </a>
+                                <a href="http://wms-hiu.full.diskon.cloud" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">
+                                    <i class="bi bi-globe2"></i> Kunjungi Website
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 bg-dark p-0 d-flex flex-column border-start border-secondary">
+                        <div class="project-preview-shell">
+                            <div class="d-flex flex-wrap align-items-start justify-content-between gap-3">
+                                <div>
+                                    <span class="badge bg-info text-dark px-3 py-2 mb-3">Demo Website</span>
+                                    <h4 class="fw-bold mb-2">Dashboard admin untuk pengelolaan gudang yang lebih terstruktur</h4>
+                                    <p class="small opacity-75 mb-0 justify-text">
+                                        Website ini dirancang untuk membantu admin mengelola stok, barang masuk, barang keluar, data rak, data produk, serta laporan operasional gudang dalam satu sistem yang rapi dan mudah dipantau.
+                                    </p>
+                                </div>
+                                <a href="http://wms-hiu.full.diskon.cloud/login" target="_blank" rel="noopener noreferrer" class="btn btn-outline-info btn-sm">
+                                    <i class="bi bi-box-arrow-up-right"></i> Buka Demo Website
+                                </a>
+                            </div>
+
+                            <div class="project-browser">
+                                <div class="project-browser-bar">
+                                    <div class="project-browser-dots">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                    <div class="project-browser-url">http://wms-hiu.full.diskon.cloud/login</div>
+                                </div>
+                                <iframe
+                                    src="http://wms-hiu.full.diskon.cloud/login"
+                                    class="project-live-frame"
+                                    title="Preview Website WMS"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    loading="lazy"></iframe>
+                            </div>
+
+                            <div class="project-frame-hint">
+                                <i class="bi bi-mouse"></i>
+                                <div class="small">
+                                    Tampilan ini memperlihatkan halaman login dan antarmuka awal WMS. Pengunjung dapat melihat pengalaman web secara langsung sebelum membuka demo penuh untuk mencoba fitur yang tersedia.
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="project-mini-card">
+                                        <div class="project-mini-icon"><i class="bi bi-box-seam"></i></div>
+                                        <h6 class="fw-bold mb-3">Yang Tersedia di Web</h6>
+                                        <ul>
+                                            <li>Barang masuk dan barang keluar</li>
+                                            <li>Master barang, rak, dan user</li>
+                                            <li>Laporan stok, grafik, dan AI assistant</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="project-note h-100">
+                                        <i class="bi bi-info-circle-fill"></i>
+                                        <div class="small">
+                                            Demo website tetap dapat diakses kapan saja melalui tombol <strong>Buka Login Demo</strong>, sehingga pengunjung bisa langsung menuju halaman sistem dan melihat alur kerja WMS secara lebih lengkap.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek 2: Tugas Akhir -->
             <div class="card bg-dark text-white shadow-lg border-0 overflow-hidden hover-card">
                 <div class="row g-0">
                     <div class="col-lg-5 p-5 d-flex flex-column justify-content-center">
